@@ -57,7 +57,7 @@ export function Profile() {
           <ProfileInfo>
             <ProfileName>
               <h1>{user.name}</h1>
-              <NavLink to={user.github}>
+              <NavLink to={user.github} target="_blank">
                 <span>GITHUB</span>
                 <FontAwesomeIcon icon={faUpRightFromSquare} />
               </NavLink>

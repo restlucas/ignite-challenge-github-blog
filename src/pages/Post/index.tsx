@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { formatDistanceToNow } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import { useEffect, useState } from 'react'
+import ReactMarkdown from 'react-markdown'
 import { NavLink, useParams } from 'react-router-dom'
 
 import { api } from '../../lib/axios'
@@ -57,7 +58,7 @@ export function Post() {
                 <FontAwesomeIcon icon={faChevronLeft} fontSize={12} />
                 <span>VOLTAR</span>
               </NavLink>
-              <NavLink to={post.html_url}>
+              <NavLink to={post.html_url} target="_blank">
                 <span>VER NO GITHUB</span>
                 <FontAwesomeIcon icon={faUpRightFromSquare} fontSize={12} />
               </NavLink>
@@ -84,7 +85,7 @@ export function Post() {
             </PostFooter>
           </PostInfo>
           <PostContent>
-            <p>{post.body}</p>
+            <ReactMarkdown>{post.body}</ReactMarkdown>
           </PostContent>
         </>
       )}

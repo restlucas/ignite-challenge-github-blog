@@ -1,4 +1,5 @@
 import { Fragment, useContext } from 'react'
+import { useForm } from 'react-hook-form'
 
 import { PostsContext } from '../../context/PostsContext'
 import { PostCard } from '../Card'
@@ -10,15 +11,28 @@ import {
 } from './styles'
 
 export function Publications() {
-  const { posts } = useContext(PostsContext)
+  const { register, handleSubmit } = useForm()
+  const { posts, getPosts } = useContext(PostsContext)
+
+  console.log(posts)
+
+  function handleFilter(data: any) {
+    getPosts(data.filter)
+  }
 
   return (
     <PublicationsContainer>
       <PublicationsHeader>
         <h2>Publicações</h2>
-        <span>6 publicações</span>
+        <span>{posts.length} publicação(ões)</span>
       </PublicationsHeader>
-      <PublicationsFilter type="text" placeholder="Buscar conteúdo" />
+      <form onSubmit={handleSubmit(handleFilter)}>
+        <PublicationsFilter
+          type="text"
+          placeholder="Buscar conteúdo"
+          {...register('filter')}
+        />
+      </form>
 
       <PublicationsList>
         {posts &&

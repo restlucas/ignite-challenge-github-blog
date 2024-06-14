@@ -1,3 +1,4 @@
+import { parseWithOptions } from 'date-fns/fp'
 import styled from 'styled-components'
 
 import { mixins } from '../../styles/mixins.style'
@@ -76,5 +77,18 @@ export const PostFooter = styled.div`
 export const PostContent = styled.div`
   padding: 2rem;
   ${mixins.fonts.textM}
-  color: ${(props) => props.theme['base-text']}
+  color: ${(props) => props.theme['base-text']};
+
+  img {
+    max-width: 100%;
+    margin: 1rem 0;
+  }
+
+  a {
+    color: ${(props) => props.theme.blue};
+  }
+
+  a:visited {
+    color: ${(props) => props.theme.blue};
+  }
 `
